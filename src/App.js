@@ -34,9 +34,35 @@ class App extends Component {
       });
   }
 
+
+
   getWeather = () => {
-    console.log("hello")
+      fetch("http://localhost:8081/api/getWeather", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify({"city":"Paris"})
+      }).then(response => response.json())
+     .then(data => console.log(data));
+
   }
+
+  getFlightDetails = () => {
+        fetch("http://localhost:8081/api/getFlightDetails", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify({"outBoundCity": "LHR", "inBoundCity":"DXB"})
+        }).then(response => response.json())
+        .then(data => console.log(data));
+  }
+
+
+
 
   onChangeForm = (e) => {
       let user = this.state.user
@@ -51,12 +77,17 @@ class App extends Component {
   }
 
   render() {
-    
+
     return (
       <div className="App">
         <Header></Header>
         <WeatherSquare//get the web weather data here by calling
             getWeather={this.getWeather}
+            >
+        </WeatherSquare>
+
+        <WeatherSquare//get the web weather data here by calling
+            getWeather={this.getFlightDetails}
             >
         </WeatherSquare>
 
