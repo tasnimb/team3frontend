@@ -39,25 +39,26 @@ class App extends Component {
   getWeather = () => {
       fetch("http://localhost:8081/api/getWeather", {
         method: "POST",
-        mode: "no-cors",
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin':'*'
         },
         body: JSON.stringify({"city":"Paris"})
       }).then(response => response.json())
-     .then(data => console.log(data));
+      .then(data => console.log(data));
 
   }
 
   getFlightDetails = () => {
         fetch("http://localhost:8081/api/getFlightDetails", {
         method: "POST",
-        mode: "no-cors",
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin':'*'
         },
         body: JSON.stringify({"outBoundCity": "LHR", "inBoundCity":"DXB"})
-        }).then(response => response.json())
+        })
+        .then(response => response.json())
         .then(data => console.log(data));
   }
 
