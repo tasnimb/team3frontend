@@ -10,6 +10,7 @@ import { getAllUsers, createUser } from './services/UserService'
 import {WeatherButton} from './components/WeatherButton'
 import {FlightsButton} from './components/FlightsButton'
 import {GetFlight} from './components/GetFlight'
+import {Map} from './components/Map'
 
 
 class App extends Component {
@@ -209,11 +210,6 @@ class App extends Component {
               }
             ]
       }
-      
-      
-      
-      
-      
           ]
           }
         }
@@ -251,7 +247,9 @@ class App extends Component {
         <GetFlight
             getFlightPrice={this.getFlightPrice}
         >
-        </GetFlight>      
+        </GetFlight> 
+
+        <Map />     
 
         <div className="container mrgnbtm">
           <div className="row">
