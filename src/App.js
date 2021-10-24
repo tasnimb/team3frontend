@@ -7,7 +7,10 @@ import { DisplayBoard } from './components/DisplayBoard'
 import CreateUser from './components/CreateUser'
 import { getAllUsers, createUser } from './services/UserService'
 
-import {WeatherSquare} from './components/WeatherSquare'
+import {WeatherButton} from './components/WeatherButton'
+import {FlightsButton} from './components/FlightsButton'
+import {GetFlight} from './components/GetFlight'
+
 
 class App extends Component {
 
@@ -33,8 +36,17 @@ class App extends Component {
         this.setState({users: users, numberOfUsers: users.length})
       });
   }
-
-
+  onChangeForm = (e) => {
+    let user = this.state.user
+    if (e.target.name === 'firstname') {
+        user.firstName = e.target.value;
+    } else if (e.target.name === 'lastname') {
+        user.lastName = e.target.value;
+    } else if (e.target.name === 'email') {
+        user.email = e.target.value;
+    }
+    this.setState({user})
+}
 
   getWeather = () => {
       fetch("http://localhost:8081/api/getWeather", {
@@ -62,35 +74,184 @@ class App extends Component {
         .then(data => console.log(data));
   }
 
-
-
-
-  onChangeForm = (e) => {
-      let user = this.state.user
-      if (e.target.name === 'firstname') {
-          user.firstName = e.target.value;
-      } else if (e.target.name === 'lastname') {
-          user.lastName = e.target.value;
-      } else if (e.target.name === 'email') {
-          user.email = e.target.value;
+  getFlightPrice = () => {
+    fetch("http://localhost:8081/api/getFlightPrice", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin':'*'
+      },
+      body: JSON.stringify({
+        "searchData" : {"data": {
+          "type": "flight-offers-pricing",
+          "flightOffers": [
+              {
+            "type": "flight-offer",
+            "id": "1",
+            "source": "GDS",
+            "instantTicketingRequired": false,
+            "nonHomogeneous": false,
+            "oneWay": false,
+            "lastTicketingDate": "2021-11-01",
+            "numberOfBookableSeats": 9,
+            "itineraries": [
+              {
+                "duration": "PT14H",
+                "segments": [
+                  {
+                    "departure": {
+                      "iataCode": "SYD",
+                      "terminal": "1",
+                      "at": "2021-11-01T13:10:00"
+                    },
+                    "arrival": {
+                      "iataCode": "KUL",
+                      "terminal": "M",
+                      "at": "2021-11-01T18:45:00"
+                    },
+                    "carrierCode": "MH",
+                    "number": "122",
+                    "aircraft": {
+                      "code": "333"
+                    },
+                    "operating": {
+                      "carrierCode": "MH"
+                    },
+                    "duration": "PT8H35M",
+                    "id": "1",
+                    "numberOfStops": 0,
+                    "blacklistedInEU": false
+                  },
+                  {
+                    "departure": {
+                      "iataCode": "KUL",
+                      "terminal": "M",
+                      "at": "2021-11-01T22:00:00"
+                    },
+                    "arrival": {
+                      "iataCode": "BKK",
+                      "at": "2021-11-01T23:10:00"
+                    },
+                    "carrierCode": "MH",
+                    "number": "796",
+                    "aircraft": {
+                      "code": "738"
+                    },
+                    "operating": {
+                      "carrierCode": "MH"
+                    },
+                    "duration": "PT2H10M",
+                    "id": "2",
+                    "numberOfStops": 0,
+                    "blacklistedInEU": false
+                  }
+                ]
+              }
+            ],
+            "price": {
+              "currency": "EUR",
+              "total": "451.50",
+              "base": "385.00",
+              "fees": [
+                {
+                  "amount": "0.00",
+                  "type": "SUPPLIER"
+                },
+                {
+                  "amount": "0.00",
+                  "type": "TICKETING"
+                }
+              ],
+              "grandTotal": "451.50"
+            },
+            "pricingOptions": {
+              "fareType": [
+                "PUBLISHED"
+              ],
+              "includedCheckedBagsOnly": true
+            },
+            "validatingAirlineCodes": [
+              "MH"
+            ],
+            "travelerPricings": [
+              {
+                "travelerId": "1",
+                "fareOption": "STANDARD",
+                "travelerType": "ADULT",
+                "price": {
+                  "currency": "EUR",
+                  "total": "451.50",
+                  "base": "385.00"
+                },
+                "fareDetailsBySegment": [
+                  {
+                    "segmentId": "1",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "QBXOWAU",
+                    "class": "Q",
+                    "includedCheckedBags": {
+                      "weight": 20,
+                      "weightUnit": "KG"
+                    }
+                  },
+                  {
+                    "segmentId": "2",
+                    "cabin": "ECONOMY",
+                    "fareBasis": "QBXOWAU",
+                    "brandedFare": "BASIC",
+                    "class": "Q",
+                    "includedCheckedBags": {
+                      "weight": 20,
+                      "weightUnit": "KG"
+                    }
+                  }
+                ]
+              }
+            ]
       }
-      this.setState({user})
+      
+      
+      
+      
+      
+          ]
+          }
+        }
+      })  
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+
+
+
   }
+
+
+
+
+
+
+
 
   render() {
 
     return (
       <div className="App">
         <Header></Header>
-        <WeatherSquare//get the web weather data here by calling
+        <WeatherButton
             getWeather={this.getWeather}
             >
-        </WeatherSquare>
+        </WeatherButton>
 
-        <WeatherSquare//get the web weather data here by calling
-            getWeather={this.getFlightDetails}
-            >
-        </WeatherSquare>
+        <FlightsButton
+            getFlights={this.getFlightDetails}
+        >
+        </FlightsButton>
+
+        <GetFlight
+            getFlightPrice={this.getFlightPrice}
+        >
+        </GetFlight>      
 
         <div className="container mrgnbtm">
           <div className="row">

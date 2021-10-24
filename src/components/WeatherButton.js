@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const WeatherSquare = ({getWeather}) => {
+export const WeatherButton = ({getWeather}) => {
     return(
         <div className="wSquare">
             <h1>Gangs of London</h1>
