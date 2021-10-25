@@ -56,7 +56,7 @@ class App extends Component {
           'Content-Type': 'application/json;charset=UTF-8',
           'Access-Control-Allow-Origin':'*'
         },
-        body: JSON.stringify({"city":"Paris"})
+        body: JSON.stringify({"latitude":"51.2763", "longitude":"30.2219"})
       }).then(response => response.json())
       .then(data => console.log(data));
 
