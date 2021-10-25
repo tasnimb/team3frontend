@@ -69,7 +69,7 @@ class App extends Component {
           'Content-Type': 'application/json;charset=UTF-8',
           'Access-Control-Allow-Origin':'*'
         },
-        body: JSON.stringify({"outBoundCity": "LHR", "inBoundCity":"DXB"})
+        body: JSON.stringify({"depCity": "LHR", "arrCity":"DXB", "depDate":"2021-11-01", "retDate":"2021-11-25"})
         })
         .then(response => response.json())
         .then(data => console.log(data));
@@ -224,11 +224,6 @@ class App extends Component {
 
 
 
-
-
-
-
-
   render() {
 
     return (
@@ -249,7 +244,8 @@ class App extends Component {
         >
         </GetFlight> 
 
-        <Map />     
+        <Map /> 
+        {/* pass in the departing city and arrival city for front end team, love from backend team */}
 
         <div className="container mrgnbtm">
           <div className="row">
