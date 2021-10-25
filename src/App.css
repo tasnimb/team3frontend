@@ -1,24 +1,315 @@
+.App {
+  text-align: center;
+}
 
-.header {
-  width: 100%;
-  padding: 2%;
-  background-color: burlywood;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-image: url('./components/images/Spectrum_Header.jpeg');
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-sky-header  {
+  background-image: url('./components/images/2020_Sky_Logo.png.jpeg') ;
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Shows {
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  height: 100px;
+}
+
+.ShowsH {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-color: white;
+  width: 200px;
+  height: 50px;
+
+
+}
+
+.ShowsInd {
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  height: 100px;
+  color: blue;
+  background-color: white;
+}
+
+.ShowsInd:hover{
+  transform: scale(1.05); 
+  background-color:lightblue;
+}
+
+.tableStyle {
+    
+  background-color: #7393B3;
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:12px;
+    -moz-border-radius:12px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+  
+
+}
+
+.form-group {
+  color: black;
+  text-align: center;
+  font-size: 18px
+}
+
+
+.videoWrapper {
+  position: relative;
+  width: 100%
+}
+
+.videoWrapper video {
+  display: block;
+  position: relative;
   text-align: center;
 }
 
-.display-board {
+.videoWrapper .overlay {
+  padding: 2px 10px;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+
+  position: absolute;
+  top: 70%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+}
+
+.imageWrapper {
+  position: relative;
+  transition: all .2s ease-in-out;
+
+}
+
+.imageWrapper:hover{
+  transform: scale(1.04)
+}
+
+.imageWrapper img {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+
+
+.imageWrapper .cornerLink {
+    opacity: 0;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding: 2px 10px;
+    color: #000000;
+    background: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+
+    position: absolute;
+    top: 70;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+}
+.imageWrapper:hover .cornerLink {
+    opacity: 0.9;
+}
+
+
+tr.SpaceUnder>td{
+  padding-bottom: 0.75em;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+}
+
+.GalleryTable {
+  width:92%; 
+  margin-left:auto; 
+  margin-right:auto
+}
+
+
+/* New sign up */
+/*
+@import url('https://fonts.googleapis.com/css?family=Jura:400');
+* { font-family: Jura, Arial; font-weight: 400; }
+body { margin: 0; padding: 0; }
+h1,h2,h3,h4,h5,h6,p { margin: 0; }
+
+.section#entry-page {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px,400px) 1fr;
+  grid-template-rows: 1fr minmax(auto,1fr) 1fr;
+  grid-gap: 10px;
   width: 100%;
-  background-color: rgb(555, 200, 789);
-  padding: 5%;
+  height: 100vh;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  box-sizing: border-box;
 }
 
-.number {
-  color: red;
-  font-size: 75px;
-  text-align: center;
+  .section#entry-page .form{
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-gap: 10px;
+    margin: auto 0;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.2);
+  }
+    
+  .section#entry-page .form .h2 {
+      margin-bottom: 5px;
+      text-align: center;
+      text-shadow: 0 4px 16px #fff;
+      font-size: 30px;
+      font-weight: 100;
+    }
+
+    .section#entry-page .form .fieldset {
+      margin: 0;
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+.section#entry-page .form .fieldset .legend {
+        padding: 5px;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+
+.section#entry-page .form .fieldset .ul {
+        margin: 0;
+        padding: 0;
+}
+.section#entry-page .form .fieldset .ul .li {
+          display: grid;
+          align-items: center;
+          margin: 10px;
+}
+.section#entry-page .form .fieldset .ul .li .a {
+            color: #02c;
+          }
+
+.section#entry-page .form .fieldset .ul .li .em {
+            grid-column: span 2;
+            text-align: center;
+            padding: 5px;
+          }
+
+.section#entry-page .form .fieldset .ul .li .label {
+            text-align: left;
+            padding-bottom: 2px;
+          }
+.section#entry-page .form .fieldset .ul .li .input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
 }
 
-.mrgnbtm {
-  margin-top: 20px;
+.section#entry-page .form .fieldset .ul .li .input:hover {
+  border: 1px solid #aaf;
 }
+
+.section#entry-page .form .button {
+  padding: 10px;
+  border:1px solid rgba(0,0,0,0);
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.section#entry-page .form .button:hover {
+  background-color: #eef;
+  border: 1px solid #aaf;
+}
+
+@media only screen and (min-width: 420px) {
+  form {
+  }
+
+    .form .h2 {
+      font-size: 40px;
+    }
+    .form .fieldset {
+    }
+    .form .fieldset .ul {
+    }
+    .form .fieldset .ul .li {
+          grid-template-columns: 100px 1fr;
+    }
+    .form .fieldset .ul .li .label {
+            padding-right: 10px;
+            padding-bottom: 0;
+            text-align: right !important;
+          }
+        }
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+}
+*/
+
