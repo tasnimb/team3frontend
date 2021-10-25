@@ -5,6 +5,7 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import Gallery from './components/Gallery'
 import Details from './components/Details';
+import Offers from './components/Offers'
 import LandingPage from './components/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
@@ -20,6 +21,7 @@ function App() {
 
 
   return (
+    <div style = {{fontFamily:"Sky"}}>
     <div>
       <Header />
     <div className="App" class = "App-header" >
@@ -29,6 +31,7 @@ function App() {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/details" component={Details} />
+          <Route exact path="/offers" component={Offers} />
           <Route exact path="/landingpage" component={LandingPage} />
           <Route exact path="/">
             <Redirect to="/landingpage"/>
@@ -41,6 +44,7 @@ function App() {
 
       <p style = {{color:"grey", textAlign:"center", textDecoration:"underline"}}> Privacy policy </p>
     </footer>
+    </div>
     </div>
   );
 }

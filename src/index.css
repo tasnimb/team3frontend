@@ -11,6 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Sky';
+  src: local('Sky'), url(./fonts/sky-regular.woff2) format('truetype');
+}
 /*
 
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');

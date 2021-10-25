@@ -32,9 +32,9 @@ const Gallery = () => {
         <table className = "GalleryTable">
 
             <tr className = "SpaceUnder">
-            <td><GalleryObj image = {GOT} title ="Game of Thrones - Iceland"/></td>
-            <td><GalleryObj image = {CN} title ="Chernobyl - Ukraine"/></td>
-            <td><GalleryObj image = {GL} title ="Gangs of London - London"/></td>
+            <td><GalleryObj image = {GOT} title ="Game of Thrones" location = "Reykjavik"/></td>
+            <td><GalleryObj image = {CN} title ="Chernobyl" location = "Ukraine"/></td>
+            <td><GalleryObj image = {GL} title ="Gangs of London" location = "London"/></td>
             </tr>
         </table>
         <table className = "GalleryTable">

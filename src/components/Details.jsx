@@ -1,16 +1,30 @@
 import React, { useMemo, useState, useEffect} from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 
 import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from 'react-date-picker'
+//import DatePicker from 'react-date-picker'
+import DatePicker from "react-datepicker";
+
+import testim from "./images/GOTImages/gotim1.jpeg";
+import testim2 from "./images/GOTImages/gotim2.jpeg";
+import testim3 from "./images/GOTImages/gotim3.jpeg";
 
 
 //const LOCATIONURL = `http://localhost:4001/location`;
 
-const Details = () => {
+const Details = ({temperature}) => {
+
     let history = useHistory();
-    const [value, onChange] = useState(new Date());
+    const state = useLocation().state;
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+      
+
+    
+
+    //const { state } = this.props.location
 
    /* const [location, setLocation] = useState({});
 
@@ -99,12 +113,28 @@ const Details = () => {
         </Table>
         </div>
         */
-        <Box style = {{backgroundColor:"white", 
+        <>
+        <h1  style = {{color:"white"}}>Visit location, home of show title</h1>
+        <table >
+            <tr>
+                <td>
+                    <img src={testim} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                </td>
+                <td>
+                    <img src={testim2} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                </td>
+                <td>
+                    <img src={testim3} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                </td>
+            </tr>
+        </table>
+        <div style = {{paddingBottom:"0.6em"}} />
+        <Box style = {{backgroundColor:"white", color:"black", 
         height:"100%", 
         width:"auto", 
         borderRadius: "20px"}}>
 
-        <form style = {{padding: "30px"}}>
+        <div style = {{padding: "30px", textAlign:"center"}}>
             <h1 style ={{color:"black", textAlign:"center"}}>Plan your trip!</h1>
 
             <select id = "dropdown" >
@@ -139,17 +169,43 @@ const Details = () => {
 
             </select>
 
-            <div className ="form-group">
-                <label style = {{fontSize:"18px"}}>Please choose a leaving date:</label>
+            <div>
+                <label style = {{fontSize:"18px"}}>Please choose a departure date:</label>
                 <DatePicker
-        onChange={onChange}
-        value={value}
-      />
+                    dateFormat="d MMMM, yyyy"
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    />
             </div>
+            <div>
+                <label style = {{fontSize:"18px"}}>Please choose a return date:</label>
+                <DatePicker
+                    dateFormat="d MMMM, yyyy"
+                    selected={endDate}
+                    onChange={(date) => setEndDate(date)}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    />
+
+
+            </div>
+
+            <h1>{//state.temperature
+            5.3}</h1>
+            <h1>{//state.weatherConditions
+            "cloudy"}</h1>
             
 
-        </form>
+        </div>
+        <button type="submit" className="btn btn-primary btn-block"  onClick={() => {history.push("/offers")} }>Find your flights</button>
         </Box>
+
+        </>
       )
       
 }
