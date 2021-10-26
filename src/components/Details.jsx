@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 //import DatePicker from 'react-date-picker'
 import DatePicker from "react-datepicker";
 
-import testim from "./images/GOTImages/gotim1.jpeg";
+import testim1 from "./images/GOTImages/gotim1.jpeg";
 import testim2 from "./images/GOTImages/gotim2.jpeg";
 import testim3 from "./images/GOTImages/gotim3.jpeg";
 
@@ -81,7 +81,8 @@ const Details = ({temperature}) => {
       }, }, []);
 */
 //      Add this in return: <Table columns={columns} data={data} />
-    
+       
+      //const a = "./images/GOTImages/gotim2.jpeg";
 
       return (
           /*
@@ -118,7 +119,7 @@ const Details = ({temperature}) => {
         <table >
             <tr>
                 <td>
-                    <img src={testim} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={testim1} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
                 <td>
                     <img src={testim2} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
@@ -195,10 +196,8 @@ const Details = ({temperature}) => {
 
             </div>
 
-            <h1>{//state.temperature
-            5.3}</h1>
-            <h1>{//state.weatherConditions
-            "cloudy"}</h1>
+            <h1>{state.temperature} &deg;C</h1>
+            <h1>{state.weatherConditions}</h1>
             
 
         </div>

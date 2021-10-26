@@ -1,7 +1,11 @@
 import React from 'react'
 import Box from "@material-ui/core/Box";
+import testim from "./images/GOTImages/gotim1.jpeg";
+import testim2 from "./images/GOTImages/gotim2.jpeg";
+import testim3 from "./images/GOTImages/gotim3.jpeg";
 
 const Offers = () => {
+
     return (
         <div>
             <table>
@@ -24,6 +28,9 @@ const Offers = () => {
         </td>
         </tr>
         </table>
+
+
+  
         </div>
     )
 }

@@ -18,7 +18,7 @@ const SignIn = () => {
         width:"auto", 
         borderRadius: "20px"}}>
 
-        <form style = {{padding: "30px"}}>
+        <form style = {{padding: "30px", paddingLeft:"55px", paddingRight:"55px"}}>
             <h1 style ={{color:"black", textAlign:"center"}}>Sign In</h1>
 
             <div className ="form-group">
