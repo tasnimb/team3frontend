@@ -8,11 +8,12 @@ const Header = () => {
 
 
     return (
-        <header>
+        <header >
             <nav className="navbar" style={{ height: '65px'}}>
-                <img src={logo} alt="SKY Logo" style={{ width: '150px', paddingLeft:"10px"}} onClick={() => {history.push("/landingpage")} } />
+                <img src={logo} alt="SKY Logo" style={{ width: '150px', paddingLeft:"10px", cursor:"pointer"}} onClick={() => {history.push("/welcome")}} />
             </nav>
         </header>
+
     )
 }
 
