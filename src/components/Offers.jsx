@@ -7,41 +7,19 @@ const Offers = () => {
     console.log("here")
     let history = useHistory();
 
-
     const departTime= useLocation().flightInfo.departTime;
     const returnTime= useLocation().flightInfo.returnTime;
     const departFrom= useLocation().flightInfo.departFrom;
     const returnFrom= useLocation().flightInfo.returnFrom;
     const prices= useLocation().flightInfo.prices;
-
-    /*
-    console.log("arrays")
-    console.log(departTime)
-    console.log(returnTime)
-    console.log(departFrom)
-    console.log(returnFrom)
-    console.log(prices)
-    console.log("arrays")
-    */
-
+    
     
     if (typeof(prices[0]) == "undefined") {
         history.push("/unavailable")
 
     }
     
-    /*
-
-    console.log(prices)
     
-    console.log("Journey 1")
-    console.log("£" + prices[0])
-    console.log(departFrom[0] + " -> " + returnFrom[0])
-    console.log(departTime[0])
-    console.log(returnFrom[0] + " -> " + departFrom[0])
-    console.log(returnTime[0])
-
-     */
 
     function createOfferComponents(){
         var components = []
@@ -54,7 +32,7 @@ const Offers = () => {
                                     borderRadius: "20px",
                                     textAlign:"center"}}>
                                     <div style = {{padding:"1em"}}>
-                                    <h1>{"Journey " + (i+1)}</h1>
+                                    <h2>{"Journey " + (i+1)}</h2>
                                     <p>{"£" + prices[i]}</p>
                                     <p>{departFrom[i] + " -> " + returnFrom[i]}</p>
                                     <p>{departTime[i]}</p>
@@ -68,21 +46,39 @@ const Offers = () => {
 
     return components
     }
+    
 
 
     return (
-        <div>
-             <Box style = {{backgroundColor:"white", color:"black", 
-        height:"100%", 
-        width:"auto", 
-        borderRadius: "20px",
+        <div style ={{width:"100%"}}>
+             <Box style = {{backgroundColor:"white", color:"black",  
+        minWidth:"100%",
         textAlign:"center"}}>
-            <h1>Map</h1>
+            <h2 style = {{paddingTop:"0.5em"}}>Your route:</h2>
+            <div className="mapSquare" style = {{paddingBottom:"0.6em"}}>
+            <iframe
+                style = {{borderRadius:"1em", border:"3px double", borderColor:"black"}}
+                title="Google Map"
+                width="55%"
+                height="400em"
+                loading="lazy"
+                allowFullScreen
+                
+                src={"https://www.google.com/maps/embed/v1/directions?key=AIzaSyBbMF8RmakgiAM7bUmKab0M_pclQTitGfs&origin="
+                + departFrom[0] + "+Airport" +
+                "&destination="
+                + returnFrom[0] + "+Airport" +
+                "&mode=flying"}>
+            </iframe>
+        </div>
         </Box>
+        <h2 style = {{padding:"0.5em"}}>Choose your journey:</h2>
             <table>
             <tr className ="formGroup">
+                
 
-         {createOfferComponents()}
+         {createOfferComponents()
+         }
   
         </tr>
         </table>
