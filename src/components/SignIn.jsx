@@ -5,6 +5,10 @@ import Box from "@material-ui/core/Box";
 
 
 const SignIn = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 
     let history = useHistory();
 
@@ -13,10 +17,13 @@ const SignIn = () => {
 
 
     return (
-        <Box style = {{backgroundColor:"white", 
+        <>
+        <br/>
+        <Box  className= "BoxObj" style = {{backgroundColor:"white", 
         height:"100%", 
         width:"auto", 
-        borderRadius: "20px"}}>
+        borderRadius: "20px",
+        boxShadow:"1px 1px 5px black"}}>
 
         <form style = {{padding: "30px", paddingLeft:"55px", paddingRight:"55px"}}>
             <h1 style ={{color:"black", textAlign:"center"}}>Sign In</h1>
@@ -55,6 +62,8 @@ const SignIn = () => {
 
         </form>
         </Box>
+        <br/>
+        </>
     )
 }
 

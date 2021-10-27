@@ -3,6 +3,10 @@ import Box from "@material-ui/core/Box";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Offers = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 
     let history = useHistory();
 
@@ -10,7 +14,7 @@ const Offers = () => {
 
         <>
 
-            <Box style = {{backgroundColor:"white", color:"black", 
+            <Box className= "BoxObj" style = {{backgroundColor:"white", color:"black", 
         height:"100%", 
         width:"auto", 
         borderRadius: "20px"}}>

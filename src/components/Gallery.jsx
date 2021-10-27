@@ -15,10 +15,35 @@ import SG from "./images/sgTitle.jpg"
 import TRAVELVID from "./videos/video.mp4"
 
 const Gallery = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 
 
     const [email, setEmail] = useState(``);
     const [password, setPassword] = useState(``);
+
+    const [dimensions, setDimensions] = React.useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+      React.useEffect(() => {
+        function handleResize() {
+          setDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+          })
+        
+    }
+    
+        window.addEventListener('resize', handleResize)
+    
+        return _ => {
+          window.removeEventListener('resize', handleResize)
+        
+    }
+      })
 
 
     return (
@@ -29,8 +54,8 @@ const Gallery = () => {
                 <source src={TRAVELVID} type="video/mp4"/>
             </video>
             <div className = "overlay" style = {{backgroundImage:"linear-gradient(180deg, rgba(0,0,0,0),rgba(0,0,0,0.4),rgba(0,0,0,0.5), rgba(0,0,0,0.6), rgba(0,0,0,1))"}}> 
-            <p  style = {{fontSize:"50px"}}>Sky Travel</p>
-            <p>Select your favourite shows, plan your journey, travel the world</p>
+            <p  style = {{textShadow:"0.5px 0.5px 0.5px black", fontSize:"50px"}}>Sky Travel</p>
+            <p style = {{textShadow:"0.5px 0.5px 0.5px black"}}>Select your favourite shows, plan your journey, travel the world</p>
 
             </div>
         </div>

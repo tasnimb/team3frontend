@@ -81,7 +81,7 @@ const GalleryObj = (props) => {
      */
 getWeather()
 }}>
-        <img src={props.image} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+        <img src={props.image} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
         <p className = "cornerLink">{props.title + " - " + props.location}</p>
     </div>
     </>

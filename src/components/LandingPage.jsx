@@ -10,6 +10,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 const LandingPage = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 
     let history = useHistory();
 
@@ -17,8 +21,8 @@ const LandingPage = () => {
   
     return (
         <>
-        <h1> Sky Travel</h1>
-        <p> Welcome to Sky Travel! Begin your journey now and immerse yourselves in the worlds of your favourite shows</p>
+        <h1 style = {{textShadow:"0.5px 0.5px 0.5px black"}}> Sky Travel</h1>
+        <p style = {{textShadow:"0.5px 0.5px 0.5px black", paddingLeft:"5%", paddingRight:"5%"}}> Welcome to Sky Travel! Begin your journey now and immerse yourselves in the worlds of your favourite shows</p>
         <button type="submit" className="btn btn-primary btn-block"  onClick={() => {history.push("/signin")} }>Get Started</button>
         <div style = {{paddingTop:"10px"}}>
         </div>

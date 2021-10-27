@@ -9,10 +9,14 @@ import Offers from './components/Offers'
 import LandingPage from './components/LandingPage';
 import Unavailable from './components/Unavailable'
 import LoadingScreen from "./components/Unavailable"
+import Policy from "./components/Policy"
+import Footer from './components/Footer';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, withRouter,Route, Switch, Redirect, useLocation, useHistory } from "react-router-dom";
 import Header from './components/Header'
+
 
 //npm install react-router-dom
 //npm install axios
@@ -20,6 +24,8 @@ import Header from './components/Header'
 
 
 function App() {
+
+  let history = useHistory();
 
   /*
 
@@ -31,22 +37,48 @@ function App() {
 
   */
 
+  const [dimensions, setDimensions] = React.useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+    
+}
+
+    window.addEventListener('resize', handleResize)
+
+    return _ => {
+      window.removeEventListener('resize', handleResize)
+    
+}
+  })
+
 
   return (
 
     <Router>
+
+
+
     <div style = {{fontFamily:"Sky"}}>
     <div>
       <Header/>
     <div className="App" class = "App-header" >
-      
+
         <Switch>
+  
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/details" component={Details} />
           <Route exact path="/offers" component={Offers} />
           <Route exact path="/unavailable" component={Unavailable} />
+          <Route exact path="/policy" component={Policy} />
           <Route exact path="/welcome" component={LandingPage} />
           <Route exact path="/">
             <Redirect to="/welcome"/>
@@ -54,13 +86,13 @@ function App() {
         </Switch>
 
     </div>
-    <footer style ={{backgroundColor:"white"}}>
+    <Footer/>
+    </div>
+    </div>
 
-      <p style = {{color:"grey", textAlign:"center", textDecoration:"underline"}}> Privacy policy </p>
-    </footer>
-    </div>
-    </div>
+
     </Router>
+
     
     
   );

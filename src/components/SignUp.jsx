@@ -39,29 +39,33 @@ const SignUp = () => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
         if(!values.firstName){
-            errors.firstName = "First Name is required";
+            errors.firstName = "*First Name is required";
         }
         if(!values.lastName){
-            errors.lastName = "Last Name is required";
+            errors.lastName = "*Last Name is required";
         }
         if(!values.email){
-            errors.email = "Email is required";
+            errors.email = "*Email is required";
         } else if(!regex.test(values.email)){
-            errors.email = "This is not a valid email format";
+            errors.email = "*This is not a valid email format";
         }
         if(!values.Password){
-            errors.password = "Password is required";
+            errors.password = "*Password is required";
         }else if(values.password < 4) {
-            errors.password = "Password must be over 4 characters";
+            errors.password = "*Password must be over 4 characters";
         }
         return errors;
     }
 
     return (
-        <Box style = {{backgroundColor:"white", 
+        <>
+        <br/>
+        <Box  className= "BoxObj" style = {{backgroundColor:"white", 
         height:"100%", 
         width:"auto", 
         borderRadius: "20px",
+        boxShadow:"1px 1px 5px black",
+        color:"black"
 
         }}>
 
@@ -77,7 +81,7 @@ const SignUp = () => {
                 value={formValues.firstName}
                 onChange={handleChange}/>
             </div>
-            <p>{formErrors.firstName}</p>
+            <p className = "errors">{formErrors.firstName}</p>
 
             <div className ="form-group">
                 <label>Last Name</label>
@@ -88,7 +92,7 @@ const SignUp = () => {
                 value={formValues.lastName}
                 onChange={handleChange}/>
             </div>
-            <p>{formErrors.lastName}</p>
+            <p className = "errors">{formErrors.lastName}</p>
 
             <div className ="form-group">
                 <label>Email address</label>
@@ -99,7 +103,7 @@ const SignUp = () => {
                 value={formValues.email}
                 onChange={handleChange}/>
             </div>
-            <p>{formErrors.email}</p>
+            <p className = "errors">{formErrors.email}</p>
 
             <div className ="form-group">
                 <label>Password</label>
@@ -110,7 +114,7 @@ const SignUp = () => {
                 value={formValues.password}
                 onChange={handleChange}/>
             </div>
-            <p>{formErrors.password}</p>
+            <p className = "errors">{formErrors.password}</p>
 
             <div className="form-group">
                 <a href="#">Terms and conditions & Privacy policy</a>
@@ -137,6 +141,8 @@ const SignUp = () => {
             
             </form>
         </Box>
+        <br/>
+        </>
     )
 }
 

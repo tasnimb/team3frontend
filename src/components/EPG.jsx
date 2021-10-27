@@ -5,6 +5,10 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 
 
 const EPG = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 
 
 

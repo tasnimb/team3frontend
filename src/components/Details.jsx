@@ -25,7 +25,12 @@ import Thunderstorm from "./images/weather/thunderstorm.png"
 
 //const LOCATIONURL = `http://localhost:4001/location`;
 
-const Details = ({temperature}) => {
+const Details = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+
 
 
     let history = useHistory();
@@ -103,8 +108,8 @@ const Details = ({temperature}) => {
           'Content-Type': 'application/json;charset=UTF-8',
           'Access-Control-Allow-Origin':'*'
         },
-        //body: JSON.stringify({"depCity": depCity, "arrCity":arrCity, "depDate":depDate, "retDate":retDate})
-        body: JSON.stringify({"depCity": "LHR", "arrCity":"DXB", "depDate":"2021-11-01", "retDate":"2021-11-25"})
+        body: JSON.stringify({"depCity": depCity, "arrCity":arrCity, "depDate":depDate, "retDate":retDate})
+        //body: JSON.stringify({"depCity": "LHR", "arrCity":"DXB", "depDate":"2021-11-01", "retDate":"2021-11-25"})
         })
         .then(response => response.json())
         .then(data => {
@@ -188,31 +193,53 @@ const Details = ({temperature}) => {
         weekday[13] = "Saturday";
 
 
+        
+        const [dimensions, setDimensions] = React.useState({ 
+            height: window.innerHeight,
+            width: window.innerWidth
+          })
+          React.useEffect(() => {
+            function handleResize() {
+              setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+              })
             
+        }
+        
+            window.addEventListener('resize', handleResize)
+        
+            return _ => {
+              window.removeEventListener('resize', handleResize)
+            
+        }
+          })
 
       return (
 
         <>
-        <h1 style = {{color:"white"}}>Visit {location}, the home of {title}</h1>
+        <br/>
+        <h1 style = {{textShadow:"0.5px 0.5px 0.5px black", color:"white"}}>Visit {location}, the home of {title}</h1>
         <table >
             <tr>
                 <td>
-                    <img src={testim1} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={testim1} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
                 <td>
-                    <img src={testim2} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={testim2} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
                 <td>
-                    <img src={testim3} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={testim3} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
             </tr>
         </table>
         
         <div style = {{paddingBottom:"0.6em"}} />
-        <Box style = {{backgroundColor:"white", color:"black", 
+        <Box className= "BoxObj" style = {{backgroundColor:"white", color:"black", 
         height:"100%", 
         width:"50%", 
-        borderRadius: "20px"}}>
+        borderRadius: "20px",
+        }} >
             
 
         <div style = {{padding: "30px", textAlign:"center"}}>

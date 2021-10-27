@@ -1,10 +1,25 @@
 import React from 'react';
+import Box from "@material-ui/core/Box";
 
-const PrivacyPolicy = () => {
+const Policy = () => {
     return (
-<div>
+        <>
+        <br/>
+        <Box  className= "BoxObj" style = {{backgroundColor:"white", 
+        height:"100%", 
+        width:"auto", 
+        borderRadius: "20px",
+        boxShadow:"1px 1px 5px black",
+        color:"black",
+        width:"60%",
+        textAlign:"center"
+
+        }}>
+
+
+<div style = {{padding:"10%"}}>
         <h1>Privacy Policy</h1>
-        <p>
+        <p style ={{fontSize:"10px"}}>
         Last updated: ​(27/10/2021)
         Sky Travels ("us", "we", or "our") operates "h​ttp://skytravels.com". This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site.
         We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.
@@ -35,7 +50,10 @@ const PrivacyPolicy = () => {
         If you have any questions about this Privacy Policy, please contact us.
         </p>
         </div>
+        </Box>
+        <br/>
+        </>
     )
 }
 
-export default PrivacyPolicy;
+export default Policy;

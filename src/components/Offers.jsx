@@ -4,6 +4,11 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const Offers = () => {
 
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+    
     console.log("here")
     let history = useHistory();
 
@@ -26,17 +31,17 @@ const Offers = () => {
         for (let i = 0; i < prices.length; i++) {
             components[i] = <td className = "offer" style ={{padding:"3em"}}>
             
-                                <Box style = {{backgroundColor:"white", color:"black", 
+                                <Box  className= "BoxObj" style = {{backgroundColor:"white", color:"black", 
                                     height:"100%", 
                                     width:"auto", 
                                     borderRadius: "20px",
                                     textAlign:"center"}}>
                                     <div style = {{padding:"1em"}}>
-                                    <h2>{"Journey " + (i+1)}</h2>
-                                    <p>{"£" + prices[i]}</p>
-                                    <p>{departFrom[i] + " -> " + returnFrom[i]}</p>
+                                    <h2 style ={{color:"blue", fontSize:"20px", textDecoration:"underline 1px"}}>{"Journey " + (i+1)}</h2>
+                                    <p style ={{color:"green"}}>{"£" + prices[i]}</p>
+                                    <p>{departFrom[i] + "  →  " + returnFrom[i]}</p>
                                     <p>{departTime[i]}</p>
-                                    <p>{returnFrom[i] + " -> " + departFrom[i]}</p>
+                                    <p>{returnFrom[i] + "  →  " + departFrom[i]}</p>
                                     <p>{returnTime[i]}</p>
                                     </div>
 
@@ -57,6 +62,7 @@ const Offers = () => {
             <h2 style = {{paddingTop:"0.5em"}}>Your route:</h2>
             <div className="mapSquare" style = {{paddingBottom:"0.6em"}}>
             <iframe
+                className= "BoxObj"
                 style = {{borderRadius:"1em", border:"3px double", borderColor:"black"}}
                 title="Google Map"
                 width="55%"
@@ -72,7 +78,7 @@ const Offers = () => {
             </iframe>
         </div>
         </Box>
-        <h2 style = {{padding:"0.5em"}}>Choose your journey:</h2>
+        <h2 style = {{textShadow:"0.5px 0.5px 0.5px black", padding:"0.5em"}}>Choose your journey:</h2>
             <table>
             <tr className ="formGroup">
                 
