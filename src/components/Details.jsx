@@ -76,7 +76,7 @@ const Details = ({temperature}) => {
         }
     }
       
-    const arrCity = useLocation().airport;
+    var arrCity = useLocation().airport;
     const [depCity, setDepCity] = useState();
     const [depDate, setDepDate] = useState();
     const [retDate, setRetDate] = useState();
@@ -87,6 +87,15 @@ const Details = ({temperature}) => {
         console.log(arrCity)
         console.log(depDate)
         console.log(retDate)
+
+        /* hard coded 
+
+        arrCity = "DXB"
+        setDepCity("LHR")
+        setDepDate("2021-11-01")
+        setRetDate("2021-11-25")
+
+         */
 
         await fetch("http://localhost:8081/api/getFlightDetails", {
         method: "POST",
@@ -99,7 +108,10 @@ const Details = ({temperature}) => {
         })
         .then(response => response.json())
         .then(data => {
-            updateState(data)})
+
+            console.log(data)
+            updateState(data)
+            })
     }
 
     function updateState(data){
@@ -117,14 +129,20 @@ const Details = ({temperature}) => {
             prices[i] = data.data[i].price.total
         }
 
+        console.log("logging history")
         history.push({
+
+            
+            pathname:'/offers',
+
+            flightInfo: {
             prices:prices,
             departTime:departTime,
             returnTime:returnTime,
             departFrom:departFrom,
             returnFrom:returnFrom
-        }
-        )
+            }
+        })
     
 }
 
@@ -331,7 +349,6 @@ const Details = ({temperature}) => {
         <button type="submit" className="btn btn-primary btn-block"  onClick={() => {
             
             getFlightDetails()
-            history.push("/offers")
     ;
     } }>Find your flights</button>
         <br/>

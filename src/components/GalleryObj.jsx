@@ -21,7 +21,6 @@ const GalleryObj = (props) => {
         }).then(response => response.json())
         .then(data => {
             console.log(data)
-            window.scrollTo(0, 0)
             updateState(data)})
     }
 
@@ -56,9 +55,32 @@ const GalleryObj = (props) => {
     return (
     <>
 
-    <div class="imageWrapper" style ={{cursor:"pointer"}} onClick={() => {//history.push("/details")
+    <div class="imageWrapper" style ={{cursor:"pointer"}} onClick={() =>  {   /*    history.push({
+            pathname: '/details',
+            title: props.title,
+            location: props.location,
+            airport: props.airport,
+            state: {
+
+                temperature0:5,
+                temperature1:5,
+                temperature2:5,
+                temperature3:5,
+                temperature4:5,
+                temperature5:5,
+                temperature6:5,
+
+                weatherConditions0:"Clear",
+                weatherConditions1:"Clear",
+                weatherConditions2:"Clear",
+                weatherConditions3:"Clear",
+                weatherConditions4:"Clear",
+                weatherConditions5:"Clear",
+                weatherConditions6:"Clear"
+     } })
+     */
 getWeather()
-} }>
+}}>
         <img src={props.image} width = "100px" height = "200px" style ={{objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
         <p className = "cornerLink">{props.title + " - " + props.location}</p>
     </div>

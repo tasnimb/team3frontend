@@ -177,6 +177,14 @@ tr.SpaceUnder>td{
   margin-right:auto
 }
 
+.offer {
+  cursor: pointer;
+}
+
+.offer:hover {
+  transform: scale(1.05);
+}
+
 
 /* New sign up */
 /*
