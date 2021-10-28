@@ -145,6 +145,7 @@ const Details = () => {
     const [depDate, setDepDate] = useState();
     const [retDate, setRetDate] = useState();
     
+var dataLength;
 
     async function getFlightDetails() {
         console.log(depCity)
@@ -173,10 +174,18 @@ const Details = () => {
         .then(response => response.json())
         .then(data => {
 
-            console.log(data)
+
+
+            dataLength = data.data.length
             updateState(data)
             }).catch(()=> { 
+                console.log("caught api error")
+                if (dataLength == 0) {
+                    history.push('/unavailable')
+                } else {
                 history.push('/error')
+                }
+                //window.location.reload();
               });
     }
 
@@ -206,7 +215,8 @@ const Details = () => {
             departTime:departTime,
             returnTime:returnTime,
             departFrom:departFrom,
-            returnFrom:returnFrom
+            returnFrom:returnFrom,
+            duration:data.data[0].itineraries[0].duration
             }
         })
     
@@ -380,7 +390,7 @@ const Details = () => {
         
         
         <Carousel 
-            showArrows={true} 
+            showArrows={false} 
             autoPlay = {true} 
             infiniteLoop = {true} 
             stopOnHover = {false}

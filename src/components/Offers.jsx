@@ -2,6 +2,7 @@ import React from 'react'
 import Box from "@material-ui/core/Box";
 import { useHistory, useLocation } from "react-router-dom";
 
+
 const Offers = () => {
 
     window.scrollTo({
@@ -12,39 +13,49 @@ const Offers = () => {
     console.log("here")
     let history = useHistory();
 
+
+
+    try {
+        const departTime= useLocation().flightInfo.departTime;
+ 
+        } catch(err) {
+            console.log("offers error")
+            history.push("/error")
+            window.location.reload();}
+
+
+    
+    /* Reroute back button use */
+
+    
+
     const departTime= useLocation().flightInfo.departTime;
     const returnTime= useLocation().flightInfo.returnTime;
     const departFrom= useLocation().flightInfo.departFrom;
     const returnFrom= useLocation().flightInfo.returnFrom;
     const prices= useLocation().flightInfo.prices;
+    const duration = useLocation().flightInfo.duration;
 
-        /* Reroute back button use */
-        if (prices == null) {
-            history.push('/gallery')
-        }
     
     
-    if (typeof(prices[0]) == "undefined") {
-        history.push("/unavailable")
 
-    }
-    
     
 
     function createOfferComponents(){
         var components = []
         for (let i = 0; i < prices.length; i++) {
             components[i] = <td className = "offer" style ={{padding:"3em"}}>
-                                <a href='https://www.skyscanner.net/?'>
+                                <a style= {{textDecoration:"none"}} href='https://www.skyscanner.net/?'>
             
                                 <Box  className= "BoxObj" style = {{backgroundColor:"white", color:"black", 
                                     height:"100%", 
                                     width:"auto", 
                                     borderRadius: "20px",
-                                    textAlign:"center"}}>
+                                    textAlign:"center",
+                                    }}>
                                     <div style = {{padding:"1em"}}>
                                     <h2 style ={{color:"blue", fontSize:"20px", textDecoration:"underline 1px"}}>{"Journey " + (i+1)}</h2>
-                                    <p style ={{color:"green"}}>{"£" + prices[i]}</p>
+                                    <h2 style ={{color:"green", fontSize:"18px"}}>{"£" + prices[i]}</h2>
                                     <p>_____________________</p>
                                     <p>{departFrom[i] + "  →  " + returnFrom[i]}</p>
                                     <p>{departTime[i].split("T")[0]}</p>
@@ -71,6 +82,7 @@ const Offers = () => {
         minWidth:"100%",
         textAlign:"center"}}>
             <h2 style = {{paddingTop:"0.5em"}}>Your route:</h2>
+            <p>{duration}</p>
             <div className="mapSquare" style = {{paddingBottom:"0.6em"}}>
             <iframe
                 className= "BoxObj"

@@ -15,6 +15,7 @@ import SG from "./images/sgTitle.jpg"
 import TRAVELVID from "./videos/video.mp4"
 
 const Gallery = () => {
+    
     window.scrollTo({
         top: 0,
         behavior: "instant"

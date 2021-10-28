@@ -9,7 +9,8 @@ const Error = () => {
         <div style ={{textAlign:"center"}}>
             <img src = {Plane} style ={{ width:"25%", margin:"auto"}}/>
             <p>Sorry, something went wrong</p>
-            <button type="submit" className="btn btn-primary btn-block"  onClick={() => {history.push("/gallery")}}>
+            <button type="submit" className="btn btn-primary btn-block"  onClick={() => {history.push("/gallery")
+        window.location.reload();}}>
                 Back to browsing
             </button>
         </div>
