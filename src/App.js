@@ -12,6 +12,9 @@ import {FlightsButton} from './components/FlightsButton'
 import {GetFlight} from './components/GetFlight'
 import {Map} from './components/Map'
 
+import {LoginButton} from './components/LoginButton'
+import {RegisterButton} from './components/RegisterButton'
+
 
 class App extends Component {
 
@@ -50,7 +53,7 @@ class App extends Component {
 }
 
   getWeather = () => {
-      fetch("http://localhost:8081/api/getWeather", {
+      fetch("http://34.243.161.7:8090/Team3/api/getWeather", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
@@ -63,7 +66,7 @@ class App extends Component {
   }
 
   getFlightDetails = () => {
-        fetch("http://localhost:8081/api/getFlightDetails", {
+        fetch("http://34.243.161.7:8090/Team3/getFlightDetails", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
@@ -222,6 +225,19 @@ class App extends Component {
 
   }
 
+  getRegister = () => {
+    fetch("http://localhost:8081/api/getRegister", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin':'*'
+    },
+    body: JSON.stringify({"firstName": "John", "LastName":"Smith", "email":"J.Smith@gmail.com", "passWord":"passWord"})
+    })
+    .then(response => response.text())
+    .then(data => console.log(data));
+  }
+
 
 
   render() {
@@ -245,7 +261,11 @@ class App extends Component {
         </GetFlight> 
 
         <Map /> 
-        {/* pass in the departing city and arrival city for front end team, love from backend team */}
+          {/* pass in the departing city and arrival city for front end team, love from backend team */}
+
+        <LoginButton getLogin = {this.getLogin}/>
+        <RegisterButton getRegister = {this.getRegister}/>  
+
 
         <div className="container mrgnbtm">
           <div className="row">
