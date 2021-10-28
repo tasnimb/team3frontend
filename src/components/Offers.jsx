@@ -34,7 +34,7 @@ const Offers = () => {
     const departFrom= useLocation().flightInfo.departFrom;
     const returnFrom= useLocation().flightInfo.returnFrom;
     const prices= useLocation().flightInfo.prices;
-    const duration = useLocation().flightInfo.duration;
+    var duration = useLocation().flightInfo.duration;
 
     
     
@@ -75,6 +75,7 @@ const Offers = () => {
     }
     
 
+    duration = duration.split("T")[1].split("H")[0]
 
     return (
         <div style ={{width:"100%"}}>
@@ -82,7 +83,6 @@ const Offers = () => {
         minWidth:"100%",
         textAlign:"center"}}>
             <h2 style = {{paddingTop:"0.5em"}}>Your route:</h2>
-            <p>{duration}</p>
             <div className="mapSquare" style = {{paddingBottom:"0.6em"}}>
             <iframe
                 className= "BoxObj"
@@ -99,6 +99,16 @@ const Offers = () => {
                 + returnFrom[0] + "+Airport" +
                 "&mode=flying"}>
             </iframe>
+            <br/>
+            <br/>
+            <a style= {{textDecoration:"none"}} href="https://onetreeplanted.org/">
+            <Box className="offer" style = {{backgroundColor:"green", color:"white",  
+        minWidth:"100%",
+        textAlign:"center"}}>
+            <p>Plant {Math.round((duration*90)/21)} trees for a carbon neutral trip</p>
+            </Box>
+            </a>
+            
         </div>
         </Box>
         <h2 style = {{textShadow:"0.5px 0.5px 0.5px black", padding:"0.5em"}}>Choose your journey:</h2>

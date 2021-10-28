@@ -5,20 +5,40 @@ import Form from "react-bootstrap/Form";
 import { useHistory } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 
+
 const SignUp = () => {
     window.scrollTo({
         top: 0,
         behavior: "instant"
     });
 
+    let checkError = false;
+    Boolean(checkError);
+
     const initialValues = {firstName: "", lastName: "", email: "", password: "" };
     const [email, setEmail] = useState(``);
     const [password, setPassword] = useState(``);
+    //const [firstName, setFirstName] = useState(``);
+    //const [lastName, setLastName] = useState(``);
+
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState(initialValues);
     const [isSubmit, setIsSubmit] = useState(false);
 
     let history = useHistory();
+
+    const getRegistered = () => {
+        fetch("http://localhost:8081/api/getRegister", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin':'*'
+        },
+        body: JSON.stringify({"firstName": formValues.firstName, "lastName": formValues.lastName, "email":formValues.email, "password":formValues.password})
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+      }
 
     const handleChange = (e) => {
         const {name, value } = e.target;
@@ -42,24 +62,33 @@ const SignUp = () => {
     const validate = (values) => {
         const errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        checkError = false;
         if(!values.firstName){
             errors.firstName = "*First Name is required";
+            checkError = true;
         }
         if(!values.lastName){
             errors.lastName = "*Last Name is required";
+            checkError = true;
         }
         if(!values.email){
             errors.email = "*Email is required";
+            checkError = true;
         } else if(!regex.test(values.email)){
             errors.email = "*This is not a valid email format";
+            checkError = true;
         }
         if(!values.Password){
             errors.password = "*Password is required";
+            checkError = true;
         }else if(values.password < 4) {
             errors.password = "*Password must be over 4 characters";
+            checkError = true;
         }
         return errors;
     }
+
+    
 
     return (
         <>
@@ -131,7 +160,12 @@ const SignUp = () => {
                     </div>
             </div>
 
-            <button type="submit" className="btn btn-primary btn-block">Create Account</button>
+            
+            <button type="submit" onClick={() => { 
+
+                console.log(checkError)
+                console.log(formValues.firstName)
+                if(formValues.firstName.length>0 && formValues.lastName.length>0 && formValues.email.length>0 && formValues.password.length>0){getRegistered()}}} className="btn btn-primary btn-block" >Create Account</button>
 
             <div>
                 <p>Already a member?</p>

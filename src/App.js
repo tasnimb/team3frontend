@@ -18,10 +18,8 @@ import 'bootstrap';
 import { BrowserRouter as Router, withRouter,Route, Switch, Redirect, useLocation, useHistory } from "react-router-dom";
 import Header from './components/Header'
 
-
 //npm install react-router-dom
 //npm install axios
-
 
 
 function App() {
