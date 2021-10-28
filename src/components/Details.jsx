@@ -9,9 +9,33 @@ import DatePicker from "react-datepicker";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-import testim1 from "./images/GOTImages/gotim1.jpeg";
-import testim2 from "./images/GOTImages/gotim2.jpeg";
-import testim3 from "./images/GOTImages/gotim3.jpeg";
+import gotim1 from "./images/GOTImages/gotim1.jpeg";
+import gotim2 from "./images/GOTImages/gotim2.jpeg";
+import gotim3 from "./images/GOTImages/gotim3.jpeg";
+
+import cnim1 from "./images/CNImages/cnim1.jpg"
+import cnim2 from "./images/CNImages/cnim2.jpg"
+import cnim3 from "./images/CNImages/cnim3.jpg"
+
+import golim1 from "./images/GOLImages/golim1.jpg"
+import golim2 from "./images/GOLImages/golim2.jpg"
+import golim3 from "./images/GOLImages/golim3.jpg"
+
+import moeim1 from "./images/MOEImages/moeim1.jpg"
+import moeim2 from "./images/MOEImages/moeim2.jpg"
+import moeim3 from "./images/MOEImages/moeim3.jpg"
+
+import gaim1 from "./images/GAImages/gaim1.jpg"
+import gaim2 from "./images/GAImages/gaim2.jpg"
+import gaim3 from "./images/GAImages/gaim3.jpg"
+
+import bpim1 from "./images/BPImages/bpim1.jpg"
+import bpim2 from "./images/BPImages/bpim2.jpg"
+import bpim3 from "./images/BPImages/bpim3.jpg"
+
+import sgim1 from "./images/SGImages/sgim1.jpg"
+import sgim2 from "./images/SGImages/sgim2.jpg"
+import sgim3 from "./images/SGImages/sgim3.jpg"
 
 import Clouds from "./images/weather/clouds.png"
 import Clear from "./images/weather/clear.png"
@@ -26,17 +50,52 @@ import Thunderstorm from "./images/weather/thunderstorm.png"
 //const LOCATIONURL = `http://localhost:4001/location`;
 
 const Details = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-
-
 
     let history = useHistory();
     const state = useLocation().state;
     const title = useLocation().title;
     const location = useLocation().location;
+
+    /* Reroute back button use */
+    if (title == null) {
+        history.push('/gallery')
+    }
+
+    var im1;
+    var im2;
+    var im3;
+
+    if (title == "Game of Thrones") {
+        im1 = gotim1
+        im2 = gotim2
+        im3 = gotim3
+    } else if (title == "Chernobyl") {
+        im1 = cnim1
+        im2 = cnim2
+        im3 = cnim3
+    } else if (title == "Gangs of London") {
+        im1 = golim1
+        im2 = golim2
+        im3 = golim3
+    } else if (title == "Mare of Easttown") {
+        im1 = moeim1
+        im2 = moeim2
+        im3 = moeim3
+    } else if (title == "Grey's Anatomy") {
+        im1 = gaim1
+        im2 = gaim2
+        im3 = gaim3
+    }
+    else if (title == "Bulletproof") {
+        im1 = bpim1
+        im2 = bpim2
+        im3 = bpim3
+    }
+    else {
+        im1 = sgim1
+        im2 = sgim2
+        im3 = sgim3
+    }
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -101,7 +160,7 @@ const Details = () => {
         setRetDate("2021-11-25")
 
          */
-
+        history.push("/loading")
         await fetch("http://localhost:8081/api/getFlightDetails", {
         method: "POST",
         headers: {
@@ -116,7 +175,9 @@ const Details = () => {
 
             console.log(data)
             updateState(data)
-            })
+            }).catch(()=> { 
+                history.push('/error')
+              });
     }
 
     function updateState(data){
@@ -223,13 +284,13 @@ const Details = () => {
         <table >
             <tr>
                 <td>
-                    <img src={testim1} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={im1} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
                 <td>
-                    <img src={testim2} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={im2} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
                 <td>
-                    <img src={testim3} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
+                    <img src={im3} width = "100px" height = "200px" style ={{boxShadow:"1px 1px 5px black", objectFit:"cover", display:"block", marginLeft:"auto", marginRight:"auto", borderRadius:"7px", border:"2px double white", width:'100%'}} />
                 </td>
             </tr>
         </table>

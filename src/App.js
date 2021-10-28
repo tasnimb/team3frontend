@@ -8,7 +8,8 @@ import Details from './components/Details';
 import Offers from './components/Offers'
 import LandingPage from './components/LandingPage';
 import Unavailable from './components/Unavailable'
-import LoadingScreen from "./components/Unavailable"
+import Loading from "./components/Loading"
+import Error from "./components/Error"
 import Policy from "./components/Policy"
 import Footer from './components/Footer';
 
@@ -79,6 +80,8 @@ function App() {
           <Route exact path="/offers" component={Offers} />
           <Route exact path="/unavailable" component={Unavailable} />
           <Route exact path="/policy" component={Policy} />
+          <Route exact path="/loading" component={Loading} />
+          <Route exact path="/error" component={Error} />
           <Route exact path="/welcome" component={LandingPage} />
           <Route exact path="/">
             <Redirect to="/welcome"/>

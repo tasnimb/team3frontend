@@ -6,6 +6,10 @@ import { useHistory } from "react-router-dom";
 import Box from "@material-ui/core/Box";
 
 const SignUp = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
 
     const initialValues = {firstName: "", lastName: "", email: "", password: "" };
     const [email, setEmail] = useState(``);

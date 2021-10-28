@@ -41,11 +41,11 @@ const LandingPage = () => {
             >
                 <div>
                     <img src={GOT}/>
-                    <p className="legend" style = {lengendStyle}>Game of thrones - Iceland</p>
+                    <p className="legend" style = {lengendStyle}>Game of thrones - Reykjavic</p>
                 </div>
                 <div>
                     <img src={CN} /> 
-                    <p className="legend" style = {lengendStyle}>Chernobyl - Ukraine</p>
+                    <p className="legend" style = {lengendStyle}>Chernobyl - Pripryat</p>
                 </div>
                 <div>
                     <img src={GL} />

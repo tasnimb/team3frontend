@@ -17,6 +17,11 @@ const Offers = () => {
     const departFrom= useLocation().flightInfo.departFrom;
     const returnFrom= useLocation().flightInfo.returnFrom;
     const prices= useLocation().flightInfo.prices;
+
+        /* Reroute back button use */
+        if (prices == null) {
+            history.push('/gallery')
+        }
     
     
     if (typeof(prices[0]) == "undefined") {
@@ -30,6 +35,7 @@ const Offers = () => {
         var components = []
         for (let i = 0; i < prices.length; i++) {
             components[i] = <td className = "offer" style ={{padding:"3em"}}>
+                                <a href='https://www.skyscanner.net/?'>
             
                                 <Box  className= "BoxObj" style = {{backgroundColor:"white", color:"black", 
                                     height:"100%", 
@@ -39,13 +45,18 @@ const Offers = () => {
                                     <div style = {{padding:"1em"}}>
                                     <h2 style ={{color:"blue", fontSize:"20px", textDecoration:"underline 1px"}}>{"Journey " + (i+1)}</h2>
                                     <p style ={{color:"green"}}>{"£" + prices[i]}</p>
+                                    <p>_____________________</p>
                                     <p>{departFrom[i] + "  →  " + returnFrom[i]}</p>
-                                    <p>{departTime[i]}</p>
+                                    <p>{departTime[i].split("T")[0]}</p>
+                                    <p>{departTime[i].split("T")[1].slice(0,-3)}</p>
+                                    <p>_____________________</p>
                                     <p>{returnFrom[i] + "  →  " + departFrom[i]}</p>
-                                    <p>{returnTime[i]}</p>
+                                    <p>{returnTime[i].split("T")[0]}</p>
+                                    <p>{returnTime[i].split("T")[1].slice(0,-3)}</p>
                                     </div>
 
                                 </Box>
+                                </a>
                             </td>
         }
 

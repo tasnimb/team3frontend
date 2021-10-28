@@ -21,10 +21,16 @@ const GalleryObj = (props) => {
         }).then(response => response.json())
         .then(data => {
             console.log(data)
-            updateState(data)})
+            updateState(data)}).catch(()=> { 
+                history.push('/error')
+              });
     }
 
     function updateState(data){
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
         history.push({
             pathname: '/details',
             title: props.title,
@@ -55,7 +61,7 @@ const GalleryObj = (props) => {
     return (
     <>
 
-    <div class="imageWrapper" style ={{cursor:"pointer"}} onClick={() =>  {   /*    history.push({
+    <div className="imageWrapper" style ={{cursor:"pointer"}} onClick={() =>  {   /*    history.push({
             pathname: '/details',
             title: props.title,
             location: props.location,
