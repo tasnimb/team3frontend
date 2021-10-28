@@ -232,7 +232,7 @@ class App extends Component {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin':'*'
     },
-    body: JSON.stringify({"firstName": "John", "lastName":"Smith", "email":"J.Smith@gmail.com", "password":"password"})
+    body: JSON.stringify({"firstName": "John", "lastName":"Smith", "email":"josepth@gmail.com", "password":"passw"})
     })
     .then(response => response.json())
     .then(data => console.log(data));
