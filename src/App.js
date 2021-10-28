@@ -232,7 +232,20 @@ class App extends Component {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin':'*'
     },
-    body: JSON.stringify({"firstName": "John", "lastName":"Smith", "email":"josepth@gmail.com", "password":"passw"})
+    body: JSON.stringify({"firstName": "John", "lastName":"Smith", "email":"john@gmail.com", "password":"password"})
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+  }
+
+  getLoggedIn = () => {
+    fetch("http://localhost:8081/api/getLoggedIn", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin':'*'
+    },
+    body: JSON.stringify({"email":"john123@gmail.com", "password":"password"})
     })
     .then(response => response.json())
     .then(data => console.log(data));
@@ -263,7 +276,7 @@ class App extends Component {
         <Map /> 
           {/* pass in the departing city and arrival city for front end team, love from backend team */}
 
-        <LoginButton getLogin = {this.getLogin}/>
+        <LoginButton getLoggedIn = {this.getLoggedIn}/>
         <RegisterButton getRegistered = {this.getRegistered}/>  
 
 
