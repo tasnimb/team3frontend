@@ -15,6 +15,7 @@
 
 .App-header {
   background-image: url('./components/images/Spectrum_Header.jpeg');
+  background-size:100% 100%;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;

@@ -165,7 +165,9 @@ const SignUp = () => {
 
                 console.log(checkError)
                 console.log(formValues.firstName)
-                if(formValues.firstName.length>0 && formValues.lastName.length>0 && formValues.email.length>0 && formValues.password.length>0){getRegistered()}}} className="btn btn-primary btn-block" >Create Account</button>
+                if(formValues.firstName.length>0 && formValues.lastName.length>0 && formValues.email.length>0 && formValues.password.length>0){getRegistered()
+                    history.push("/signup")
+                    }}} className="btn btn-primary btn-block" >Create Account</button>
 
             <div>
                 <p>Already a member?</p>

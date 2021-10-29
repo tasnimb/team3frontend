@@ -15,6 +15,23 @@ const SignIn = () => {
     const [email, setEmail] = useState(``);
     const [password, setPassword] = useState(``);
 
+    const getLoggedIn = () => {
+        console.log("sending1")
+        fetch("http://localhost:8081/api/getLoggedIn", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin':'*'
+        },
+        body: JSON.stringify({"email":email, "password":password})
+        
+        })
+        .then(response => response.json())
+        .then(data => console.log(data)).catch(()=> { 
+            console.log("caught log in error")
+            history.push("/gallery")
+          });
+}
 
     return (
         <>
@@ -46,7 +63,11 @@ const SignIn = () => {
             </div>
 
             <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-block" onClick={() => {history.push("/gallery")}}>Sign In</button>
+            <button type="submit" className="btn btn-primary btn-block" onClick={() => {
+
+                history.push("/gallery")
+                
+                }}>Sign In</button>
             </div>
 
             <div className="form-group">
